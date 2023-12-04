@@ -1,12 +1,12 @@
 from sys import stdin
 
 
-def count_cards(cards: list[int], i: int):
-    global answer
-    answer += cards[i]
+# def count_cards(cards: list[int], i: int):
+#     global answer
+#     answer += cards[i]
 
-    for j in range(i + 1, min(i + cards[i] + 1, len(cards))):
-        count_cards(cards, j)
+#     for j in range(i + 1, min(i + cards[i] + 1, len(cards))):
+#         count_cards(cards, j)
 
 
 cards = []
@@ -21,8 +21,9 @@ for line in stdin:
     matches = len(total.intersection(winning))
     cards.append(matches)
 
-answer = len(cards)
+answer = [1] * len(cards)
 for i in range(0, len(cards)):
-    count_cards(cards, i)
+    for j in range(i + 1, min(i + cards[i] + 1, len(cards))):
+        answer[j] += answer[i]
 
-print(answer)
+print(sum(answer))
