@@ -1,37 +1,3 @@
-# seeds: 79 14 55 13
-
-# seed-to-soil map:
-# 50 98 2
-# 52 50 48
-
-# soil-to-fertilizer map:
-# 0 15 37
-# 37 52 2
-# 39 0 15
-
-# fertilizer-to-water map:
-# 49 53 8
-# 0 11 42
-# 42 0 7
-# 57 7 4
-
-# water-to-light map:
-# 88 18 7
-# 18 25 70
-
-# light-to-temperature map:
-# 45 77 23
-# 81 45 19
-# 68 64 13
-
-# temperature-to-humidity map:
-# 0 69 1
-# 1 0 69
-
-# humidity-to-location map:
-# 60 56 37
-# 56 93 4
-
 from sys import stdin
 
 
@@ -61,14 +27,13 @@ class Solution:
 
         return min(locations)
 
-    def _get_map_range(self, map: list[(int, int, int)], ranges: list) -> list[int, int]:
+    def _apply_map_to_ranges(self, map: list[(int, int, int)], ranges: list) -> list[int, int]:
         new_ranges = []
         for dst, src, length in map:
             delta = dst - src
             not_intersected_ranges = []
 
-            while ranges:
-                start, end = ranges.pop()
+            for start, end  in ranges:
                 # ----|intersection|
                 if start < src and src < end <= src + length:
                     not_intersected_ranges.append((start, src))
@@ -100,7 +65,7 @@ class Solution:
         for start, length in zip(self._seeds[::2], self._seeds[1::2]):
             current_ranges = [(start, start + length)]
             for map in self._maps:
-                current_ranges = self._get_map_range(map, current_ranges)
+                current_ranges = self._apply_map_to_ranges(map, current_ranges)
             min_locations.append(min(current_ranges)[0])
 
         return min(min_locations)

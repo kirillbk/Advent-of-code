@@ -1,6 +1,3 @@
-# Time:      7  15   30
-# Distance:  9  40  200
-
 class Solution:
     def __init__(self) -> None:
         _, self._time = input().split(':')
