@@ -3,8 +3,7 @@ from sys import stdin
 
 class Solution:
     def __init__(self) -> None:
-        image = stdin.read().split('\n')
-        image.pop()
+        image = stdin.read().splitlines()
 
         # galaxies coordinates
         self._galaxies = []
