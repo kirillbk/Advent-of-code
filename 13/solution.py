@@ -1,10 +1,10 @@
 from sys import stdin
-from typing import Callable, TextIO
+from typing import Callable
 
 
 class Solution:
-    def __init__(self, file: TextIO) -> None:
-        self._patterns = [pattern.split() for pattern in file.read().split('\n\n')]
+    def __init__(self) -> None:
+        self._patterns = [pattern.split() for pattern in stdin.read().split('\n\n')]
 
     def _solve(self, reflection_func: Callable[[str], int]) -> int:
         answer = 0
@@ -38,6 +38,6 @@ class Solution:
         return self._solve(get_reflection)
 
 
-solution = Solution(stdin)
+solution = Solution()
 print(solution.solve1())
 print(solution.solve2())
