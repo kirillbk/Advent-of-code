@@ -1,3 +1,5 @@
+# --- Day 1: Historian Hysteria ---
+
 from collections import Counter
 from sys import stdin
 
