@@ -4,7 +4,7 @@ from sys import stdin
 
 
 def solution1(puzzle: list[list[str]]) -> int:
-    def _solution(x: int, y: int, dx: int, dy: int) -> bool:
+    def _is_pattern(x: int, y: int, dx: int, dy: int) -> bool:
         s = ""
         while len(s) < len(pattern):
             if x < 0 or x >= len(puzzle[0]) or y < 0 or y >= len(puzzle):
@@ -22,7 +22,7 @@ def solution1(puzzle: list[list[str]]) -> int:
         for j in range(len(puzzle[0])):
             if pattern.startswith(puzzle[i][j]):
                 for dx, dy in steps:
-                    if _solution(j, i, dx, dy):
+                    if _is_pattern(j, i, dx, dy):
                         total += 1
 
     return total

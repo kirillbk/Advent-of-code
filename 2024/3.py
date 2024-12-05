@@ -33,5 +33,6 @@ def solution2(s: str) -> int:
 
 
 s = stdin.read()
+
 print(solution1(s))
 print(solution2(s))
