@@ -1,3 +1,4 @@
+# https://adventofcode.com/2024/day/6
 # --- Day 6: Guard Gallivant ---
 
 from copy import deepcopy

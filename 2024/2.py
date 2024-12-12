@@ -1,3 +1,4 @@
+# https://adventofcode.com/2024/day/1
 # --- Day 2: Red-Nosed Reports ---
 
 from sys import stdin
