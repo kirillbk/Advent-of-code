@@ -44,7 +44,7 @@ def solution2(machines: list[tuple[int]]) -> int:
 
 puzzle = []
 for m in stdin.read().split("\n\n"):
-    ax, ay, bx, by, px, py = list(map(int, findall(r"\d+", m)))
+    ax, ay, bx, by, px, py = map(int, findall(r"\d+", m))
     puzzle.append((ax, ay, bx, by, px, py))
 
 print(solution1(puzzle))
