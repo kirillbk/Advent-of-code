@@ -10,16 +10,14 @@ def solution1(robots: list[tuple[int]]) -> int:
     for x, y, vx, vy in robots:
         px = (x + 100 * vx) % 101
         py = (y + 100 * vy) % 103
-        if 0 <= px < 50:
-            if 0 <= py < 51:
-                q1 += 1
-            elif 51 < py < 103:
-                q2 += 1
-        elif 50 < px < 101:
-            if 0 <= py < 51:
-                q3 += 1
-            elif 51 < py < 103:
-                q4 += 1
+        if px < 50 and py < 51:
+            q1 += 1
+        elif px < 50 and py > 51:
+            q2 += 1
+        elif px > 50 and py < 51:
+            q3 += 1
+        elif px > 50 and py > 51:
+            q4 += 1
 
     return q1 * q2 * q3 * q4
 
