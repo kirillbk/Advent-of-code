@@ -39,15 +39,19 @@ def solution1(bytes: list[tuple[int, int]]) -> int:
     return bfs(0, 0, 70, 70, bytes)
 
 
-def solution2(bytes: list[tuple[int, int]]) -> str | None:
-    fallen_bytes = set(bytes[i] for i in range(1024))
-    for i in range(1024, len(bytes)):
-        x, y = bytes[i]
-        fallen_bytes.add((x, y))
-        if bfs(0, 0, 70, 70, fallen_bytes) == -1:
-            return f"{x},{y}"
+def solution2(bytes: list[tuple[int, int]]) -> str:
+    l = 1023
+    r = len(bytes)
+    while l + 1 < r:
+        m = (l + r) // 2
+        fallen_bytes = set(bytes[i] for i in range(m))
+        if bfs(0, 0, 70, 70, fallen_bytes) != -1:
+            l = m
+        else:
+            r = m
 
-    return None
+    x, y = bytes[l]
+    return f"{x},{y}"
 
 
 bytes = []
