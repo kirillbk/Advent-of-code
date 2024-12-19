@@ -1,5 +1,5 @@
+# https://adventofcode.com/2024/day/18
 # --- Day 18: RAM Run ---
-# https://adventofcode.com/2024/day/17
 
 from collections import deque
 from sys import stdin
@@ -40,7 +40,7 @@ def solution1(bytes: list[tuple[int, int]]) -> int:
 
 
 def solution2(bytes: list[tuple[int, int]]) -> str:
-    l = 1023
+    l = 1024
     r = len(bytes)
     while l + 1 < r:
         m = (l + r) // 2
