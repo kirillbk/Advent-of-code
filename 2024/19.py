@@ -13,7 +13,7 @@ def make_towel(towel: str, patterns: tuple[str]) -> int:
     variants = 0
     for p in patterns:
         if towel.startswith(p):
-            variants += make_towel(towel[len(p) :], patterns)
+            variants += make_towel(towel.removeprefix(p), patterns)
 
     return variants
 
