@@ -43,7 +43,7 @@ class Xor(Gate):
         return self.in1.out ^ self.in2.out
 
 
-def simulate(schema: dict[str, Gate]) -> int:
+def solution1(schema: dict[str, Gate]) -> int:
     out = filter(lambda x: x.name.startswith("z"), schema.values())
     out = (gate.out for gate in sorted(out, key=attrgetter("name"), reverse=True))
     ans = 0
@@ -51,10 +51,6 @@ def simulate(schema: dict[str, Gate]) -> int:
         ans = (ans << 1) | z
 
     return ans
-
-
-def solution1(schema: dict[str, Gate]) -> int:
-    return simulate(schema)
 
 
 # use Graphviz: dot -Tsvg -O .\graph.gv
